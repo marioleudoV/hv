@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mario Leudo - Desarrollador Web</title>
+    <style>
+        :root {
+            --verde-oscuro: #2E4600;
+            --verde-oliva: #486B00;
+            --cafe: #A37B2F;
+            --negro: #000000;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .resume-container {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            background-color: white;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            border-radius: 10px;
+            overflow: hidden;
+            max-width: 1000px;
+            width: 100%;
+        }
+
+        .sidebar {
+            background-color: var(--verde-oliva);
+            color: white;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .profile-image {
+            background-image: url(./imag/IMG_20240313_133852.jpg);
+            background-size: cover;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            margin-bottom: 20px;
+        }
+
+        .sidebar h1 {
+            text-align: center;
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .sidebar h2 {
+            text-align: center;
+            font-size: 1rem;
+            color: rgba(255,255,255,0.8);
+            margin-bottom: 20px;
+        }
+
+        .contact-info, .skills {
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        .contact-info h3, .skills h3 {
+            border-bottom: 2px solid var(--cafe);
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+        }
+
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .skill-tag {
+            background-color: var(--cafe);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+        }
+
+        .main-content {
+            padding: 40px;
+            background-color: white;
+        }
+
+        .section-title {
+            color: var(--verde-oscuro);
+            border-bottom: 3px solid var(--verde-oliva);
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        .professional-profile, .experience {
+            margin-bottom: 30px;
+        }
+
+        .github-btn {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            background-color: var(--cafe);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .github-btn:hover {
+            background-color: var(--verde-oscuro);
+        }
+
+        @media (max-width: 768px) {
+            .resume-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="resume-container">
+        <div class="sidebar">
+            <div class="profile-image"></div>
+            <h1>MARIO LEUDO VARGAS</h1>
+            <h2>Desarrollador Web</h2>
+            
+            <div class="contact-info">
+                <h3>Contacto</h3>
+                <p>Email: leudomario8@gmail.com</p>
+                <p>Email: leudom33@gmail.com</p>
+                <p>Teléfono: +57 3017576067</p>
+                <p>Teléfono: +57 3106517105</p>
+                <p>Medellín, Colombia</p>
+            </div>
+
+            <div class="skills">
+                <h3>Habilidades Técnicas</h3>
+                <div class="skills-list" id="skillsList"></div>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <section class="professional-profile">
+                <h2 class="section-title">Perfil Profesional</h2>
+                <p>Desarrollador web con 3 años de experiencia especializado en tecnologías full-stack modernas. Comprometido con crear soluciones web eficientes y escalables utilizando las últimas tecnologías del mercado, Capacidad probada para trabajar en equipo y resolver problemas de manera eficient y apasionado por la tecnología
+                </p>
+            </section>
+
+            <section class="experience">
+                <h2 class="section-title">Experiencia Profesional</h2>
+                <div>
+                    <h3>Desarrollador Web</h3>
+                    <p>3 años de experiencia</p>
+                    <ul >
+                        <li>Desarrollo de aplicaciones web responsivos para diferentes clientes utilizando frameworks modernos.</li>
+                        <li>Implementación de funcionalidades personalizadas y optimización de
+                            velocidad.</li>
+                        <li>Colaboración con diseñadores gráficos para lograr un diseño atractivo.</li>
+                        <li>Implementación de soluciones front-end y back-end.</li>
+                        <li>Optimización de rendimiento y experiencia de usuario.</li>                        <li>Experiencia con plataformas como WordPress, Shopify y Wix.</li>                       <li>Conocimientos en adobe_photoshop</li>
+
+                    </ul>
+                </div>
+            </section>
+
+            <button id="githubBtn" class="github-btn">Ver Repositorio de GitHub</button>
+        </div>
+    </div>
+
+    <script>
+        // Skills Data
+        const skills = [
+            "pyrhon", "adobe_photoshop", "JavaScript", "Angular", 
+            "React", "Vue", "Webpack", "TypeScript", 
+            "Next.js", "Node.js"
+        ];
+
+        // Render Skills
+        const skillsList = document.getElementById('skillsList');
+        skills.forEach(skill => {
+            const skillTag = document.createElement('span');
+            skillTag.classList.add('skill-tag');
+            skillTag.textContent = skill;
+            skillsList.appendChild(skillTag);
+        });
+
+        // GitHub Button Handler
+        document.getElementById('githubBtn').addEventListener('click', () => {
+            window.open('https://github.com/marioleudoV', '_blank');
+        });
+    </script>
+</body>
+</html>
